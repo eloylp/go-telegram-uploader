@@ -21,7 +21,7 @@ func Watcher(initialPath string) *fsnotify.Watcher {
 	return watcher
 }
 
-func StartMediaWatcher(watcher *fsnotify.Watcher, handler func(string)) {
+func StartWatcher(watcher *fsnotify.Watcher, handler func(string)) {
 	for {
 		select {
 		case event, ok := <-watcher.Events:

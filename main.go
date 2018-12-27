@@ -11,6 +11,6 @@ func main() {
 	createdWatcher := watcher.Watcher(config.GetConfig().FolderToScan)
 	defer createdWatcher.Close()
 	done := make(chan bool)
-	go watcher.StartMediaWatcher(createdWatcher, handler.ProcessFile)
+	go watcher.StartWatcher(createdWatcher, handler.ProcessFile)
 	<-done
 }
