@@ -2,26 +2,20 @@ package watcher
 
 import (
 	"github.com/eloylp/go-telegram-uploader/fails"
+	"github.com/eloylp/go-telegram-uploader/handler"
 	"github.com/fsnotify/fsnotify"
 	"log"
-	"sync"
 )
 
-var once sync.Once
-var watcher *fsnotify.Watcher
-
-func Watcher(initialPath string) *fsnotify.Watcher {
-	once.Do(func() {
-		createdWatcher, err := fsnotify.NewWatcher()
-		fails.FailIfError(err)
-		err = createdWatcher.Add(initialPath)
-		fails.FailIfError(err)
-		watcher = createdWatcher
-	})
-	return watcher
+func Watcher(initialPath string) {
+	createdWatcher, err := fsnotify.NewWatcher()
+	fails.FailIfError(err)
+	err = createdWatcher.Add(initialPath)
+	fails.FailIfError(err)
+	startWatcher(createdWatcher, handler.ProcessFile)
 }
 
-func StartWatcher(watcher *fsnotify.Watcher, handler func(string)) {
+func startWatcher(watcher *fsnotify.Watcher, handler func(string)) {
 	for {
 		select {
 		case event, ok := <-watcher.Events:
