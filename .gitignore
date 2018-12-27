@@ -1,2 +1,4 @@
 .idea
 go-telegram-uploader
+build/*
+!build/.gitkeep
