@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	createdWatcher := watcher.GetGenericWatcher(config.GetConfig().FolderToScan)
+	createdWatcher := watcher.Watcher(config.GetConfig().FolderToScan)
 	defer createdWatcher.Close()
 	done := make(chan bool)
 	go watcher.StartMediaWatcher(createdWatcher, handler.ProcessFile)

@@ -10,7 +10,7 @@ import (
 var once sync.Once
 var watcher *fsnotify.Watcher
 
-func GetGenericWatcher(initialPath string) *fsnotify.Watcher {
+func Watcher(initialPath string) *fsnotify.Watcher {
 	once.Do(func() {
 		createdWatcher, err := fsnotify.NewWatcher()
 		fails.FailIfError(err)
