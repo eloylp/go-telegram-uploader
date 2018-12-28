@@ -6,7 +6,5 @@ import (
 )
 
 func main() {
-	done := make(chan bool)
-	go watcher.Watcher(config.GetConfig().FolderToScan)
-	<-done
+	watcher.Watcher(config.GetConfig().FolderToScan)
 }
