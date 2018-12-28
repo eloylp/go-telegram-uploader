@@ -5,7 +5,7 @@ It will detect file creation.
 
 ## How to build
 There is one script at the root of the project, [build_all.sh](build_all.sh) that will build all binaries placing them 
-at [build folder](build)
+in the [build folder](build)
 ```bash
 ./build_all.sh
 ```
