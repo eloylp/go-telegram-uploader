@@ -13,7 +13,7 @@ Will be enough if you have the [go toolchain](https://golang.org/doc/install) in
 
 ## How to boot
 ```bash
-BOT_TOKEN=your_token CHAT_ID=666 FOLDER_TO_SCAN=/path/folder ./go-telegram-uploader  
+./go-telegram-uploader --chat=your_chat_id --folder=/your/folder --token=your_bot_token 
 ```
 ## Precompiled binaries
 If you trust on this repo, you can download latest binaries from the current or [previous releases](https://github.com/eloylp/go-telegram-uploader/releases)

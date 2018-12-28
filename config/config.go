@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/eloylp/go-telegram-uploader/fails"
-	"github.com/joeshaw/envdecode"
+	"flag"
+	"os"
 	"sync"
 )
 
@@ -21,8 +21,16 @@ func init() {
 
 func GetConfig() *Config {
 	once.Do(func() {
-		err := envdecode.Decode(config)
-		fails.FailIfError(err)
+
+		flag.StringVar(&config.BotToken, "token", "", "The telegram bot token.")
+		flag.Int64Var(&config.ChatId, "chat", 0, "The chat id to dump content")
+		flag.StringVar(&config.FolderToScan, "folder", "", "The folder to keep scanning for media files.")
+		flag.Parse()
+
+		if config.BotToken == "" || config.ChatId == 0 || config.FolderToScan == "" {
+			flag.PrintDefaults()
+			os.Exit(1)
+		}
 	})
 	return config
 }
