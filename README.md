@@ -11,7 +11,7 @@ at [build folder](build)
 ```
 Will be enough if you have the [go toolchain](https://golang.org/doc/install) installed on your system.
 
-## How to boot
+## How to run
 ```bash
 ./go-telegram-uploader --chat=your_chat_id --folder=/your/folder --token=your_bot_token 
 ```
